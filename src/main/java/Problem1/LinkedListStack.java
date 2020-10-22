@@ -1,4 +1,10 @@
 package Problem1;
+/*
+    Nam Nguyen
+    October 24, 2020
+    CSS 143B
+    Homework_3
+ */
 
 import java.util.LinkedList;
 
@@ -9,26 +15,29 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public LinkedListStack() {
         // homework
+        data = new LinkedList<T>();
     }
 
     @Override
     public boolean push(T val) {
         // homework
-        return false;   // place holder
+        data.push(val);
+        return true;
     }
 
     @Override
     public T pop() {
         // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        T val = data.pop();
+
+        return val;
     }
 
     @Override
     public T peek() {
         // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        T val = data.peek();
+        return val;
     }
 
     @Override
