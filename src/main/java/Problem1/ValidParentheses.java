@@ -13,7 +13,6 @@ public class ValidParentheses {
         // !!! must use ArrayStack or LinkedListStack from problem 1
         int matchCount = 0;
         int size = 0;
-        int tempIdx = 0;
 
         //  filter the string
         if (str == null || str.length() == 0) {
@@ -26,29 +25,25 @@ public class ValidParentheses {
         //  fill up the array with each char of str
         for (int i = 0; i < str.length(); i++) {
             if (size < input.length) {
-                input[tempIdx] = str.charAt(i);
+                input[size] = str.charAt(i);
             }
             //  when input[tempIdx] contains a right side of a bracket than check if the left side is 1 index behind
-            if (input[tempIdx] == ']') {
+            if (input[size] == ']') {
                 if (i > 0 && input[size - 1] == '[') {
                     matchCount++;
                     size = size - 2;
-                    tempIdx = tempIdx - 2;
                 }
-            } else if (input[tempIdx] == '}') {
+            } else if (input[size] == '}') {
                 if (i > 0 && input[size - 1] == '{') {
                     matchCount++;
                     size = size - 2;
-                    tempIdx = tempIdx - 2;
                 }
-            } else if (input[tempIdx] == ')') {
+            } else if (input[size] == ')') {
                 if (i > 0 && input[size - 1] == '(') {
                     matchCount++;
                     size = size - 2;
-                    tempIdx = tempIdx - 2;
                 }
             }
-            tempIdx++;
             size++;
         }
 
