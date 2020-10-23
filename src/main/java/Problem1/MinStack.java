@@ -4,6 +4,9 @@ package Problem1;
     October 24, 2020
     CSS 143B
     Homework_3
+
+    Sources:
+    https://youtu.be/ufwPuyxkNVE
  */
 
 public class MinStack extends ArrayStack<Integer> {
