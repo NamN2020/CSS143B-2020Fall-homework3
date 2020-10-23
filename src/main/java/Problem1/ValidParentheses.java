@@ -6,85 +6,56 @@ package Problem1;
     Homework_3
  */
 
-import javax.xml.stream.events.Characters;
-
 public class ValidParentheses {
     // Do not change signature (function name, parameters, return type)
     public static boolean isValid(String str) {
         // homework
         // !!! must use ArrayStack or LinkedListStack from problem 1
-        int rightCircleBracketCount = 0;
-        int leftCircleBracketCount = 0;
-        int rightSquareBracketCount = 0;
-        int leftSquareBracketCount = 0;
-        int rightCurlyBracketCount = 0;
-        int leftCurlyBracketCount = 0;
-        int expectedMatchCount = (str.length() / 2);
         int matchCount = 0;
-        int filterCount = 0;
+        int size = 0;
+        int tempIdx = 0;
 
         //  filter the string
-        if(str.length() == 0 || str == null){
+        if (str == null || str.length() == 0) {
+            return true;
+        } else if ((str.length() % 2) != 0) {
             return false;
-        } else {
-            for(int i = 0; i < str.length(); i ++){
-                if(str.charAt(i) == '('){
-                    filterCount++;
-                } else  if(str.charAt(i) == ')'){
-                    filterCount++;
-                } else  if(str.charAt(i) == '['){
-                    filterCount++;
-                } else  if(str.charAt(i) == ']'){
-                    filterCount++;
-                } else  if(str.charAt(i) == '{'){
-                    filterCount++;
-                } else  if(str.charAt(i) == '}'){
-                    filterCount++;
-                }
-            }
-
-            if(filterCount != str.length()){
-                return false;
-            }
         }
 
         char[] input = new char[str.length()];
         //  fill up the array with each char of str
-        for(int i = 0; i < str.length(); i ++){
-            input[i] = str.charAt(i);
-        }
-
-        //  adding up each BracketCount
-        for(int i = 0; i < str.length(); i ++){
-            if(input[i] == '('){
-               leftCircleBracketCount++;
-            } else  if(input[i] == ')'){
-               rightCircleBracketCount++;
-            } else  if(input[i] == '['){
-                leftSquareBracketCount++;
-            } else  if(input[i] == ']'){
-                rightSquareBracketCount++;
-            } else  if(input[i] == '{'){
-                leftCurlyBracketCount++;
-            } else  if(input[i] == '}'){
-                rightCurlyBracketCount++;
+        for (int i = 0; i < str.length(); i++) {
+            if (size < input.length) {
+                input[tempIdx] = str.charAt(i);
             }
-
-            if((leftCircleBracketCount + rightCircleBracketCount) != 0){
-                if(((leftCircleBracketCount + rightCircleBracketCount) % 2) == 0){
+            //  when input[tempIdx] contains a right side of a bracket than check if the left side is 1 index behind
+            if (input[tempIdx] == ']') {
+                if (i > 0 && input[size - 1] == '[') {
                     matchCount++;
+                    size = size - 2;
+                    tempIdx = tempIdx - 2;
                 }
-            } else if((leftSquareBracketCount + rightSquareBracketCount) != 0){
-                if(((leftSquareBracketCount + rightSquareBracketCount) % 2) == 0){
+            } else if (input[tempIdx] == '}') {
+                if (i > 0 && input[size - 1] == '{') {
                     matchCount++;
+                    size = size - 2;
+                    tempIdx = tempIdx - 2;
                 }
-            } else if((leftCurlyBracketCount + rightCurlyBracketCount) != 0){
-                if(((leftCurlyBracketCount + rightCurlyBracketCount) % 2) == 0){
+            } else if (input[tempIdx] == ')') {
+                if (i > 0 && input[size - 1] == '(') {
                     matchCount++;
+                    size = size - 2;
+                    tempIdx = tempIdx - 2;
                 }
             }
+            tempIdx++;
+            size++;
         }
 
-        return (matchCount == expectedMatchCount);
+        int expectedMatchCount = (str.length() / 2);
+        if (matchCount > 0) {
+            return (matchCount == expectedMatchCount);
+        }
+        return false;
     }
 }
