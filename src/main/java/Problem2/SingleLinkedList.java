@@ -1,4 +1,13 @@
 package Problem2;
+/*
+    Nam Nguyen
+    October 24, 2020
+    CSS 143B
+    Homework_3
+
+    Sources:
+    Professor's Du Saturday(10/24/20) lecture. (Copy Constructor)
+ */
 
 // all functions assume using dummy node
 public class SingleLinkedList {
@@ -13,6 +22,20 @@ public class SingleLinkedList {
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
         // homework
+        if(list == null){
+            return;
+        }
+
+        ListNode ptr1 = new ListNode();
+        head = ptr1;
+        ListNode ptr2 = list.head.next;
+
+        while(ptr2 != null){
+            ptr1.next = new ListNode(ptr2.val);
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+        size = list.size;
     }
 
     public int removeAll(int valueToRemove) {
