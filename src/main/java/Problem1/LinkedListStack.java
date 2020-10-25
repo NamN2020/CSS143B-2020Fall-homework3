@@ -15,7 +15,7 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public LinkedListStack() {
         // homework
-        data = new LinkedList<T>();
+        data = new LinkedList();
     }
 
     @Override
@@ -28,16 +28,13 @@ public class LinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() {
         // homework
-        T val = data.pop();
-
-        return val;
+        return data.pop();
     }
 
     @Override
     public T peek() {
         // homework
-        T val = data.peek();
-        return val;
+        return data.peek();
     }
 
     @Override
