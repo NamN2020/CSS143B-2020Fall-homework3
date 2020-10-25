@@ -1,5 +1,10 @@
 package Problem3;
-
+/*
+    Nam Nguyen
+    October 25, 2020
+    CSS 143B
+    Homework_3
+ */
 import Problem1.LinkedListStack;
 import Problem1.Stack;
 import Problem2.ListNode;
@@ -11,7 +16,6 @@ public class Problem3 {
         // homework
         // !!! must use your ArrayStack or LinkedListStack in problem 1
         // print with the following format. System.out.println() will not pass test.
-
 
         LinkedListStack<ListNode> stack = new LinkedListStack();
 
