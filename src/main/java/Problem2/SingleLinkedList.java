@@ -49,18 +49,19 @@ public class SingleLinkedList {
         }
 
         while(ptr2 != null){
-            Integer current = ptr1.next.val;
+            Integer current = ptr2.val;
+
             if(current == valueToRemove){
                 ptr1.next = ptr2.next;
                 size--;
                 count++;
             }
 
-            if(ptr2.next != null) {
+            if(ptr2.next != null && current != valueToRemove) {
                 ptr1 = ptr2;
                 ptr2 = ptr2.next;
-            } else if(ptr2.val != current) {
-                ptr1 = ptr2;
+            } else if(current == valueToRemove){
+                ptr2 = ptr2.next;
             } else {
                 ptr2 = null;
             }
