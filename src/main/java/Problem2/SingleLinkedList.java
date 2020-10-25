@@ -41,7 +41,32 @@ public class SingleLinkedList {
     public int removeAll(int valueToRemove) {
         // homework
         // in-place
-        return -1; // place holder
+        int count = 0;
+        ListNode ptr1 = head;
+        ListNode ptr2 = head.next;
+        if(ptr1.next == null){
+            return 0;
+        }
+
+        while(ptr2 != null){
+            Integer current = ptr1.next.val;
+            if(current == valueToRemove){
+                ptr1.next = ptr2.next;
+                size--;
+                count++;
+            }
+
+            if(ptr2.next != null) {
+                ptr1 = ptr2;
+                ptr2 = ptr2.next;
+            } else if(ptr2.val != current) {
+                ptr1 = ptr2;
+            } else {
+                ptr2 = null;
+            }
+        }
+
+        return count;
     }
 
     // reverse the linked list nodes iteratively (no recursion)
