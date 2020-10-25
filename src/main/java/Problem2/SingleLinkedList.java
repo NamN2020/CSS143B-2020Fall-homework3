@@ -49,7 +49,7 @@ public class SingleLinkedList {
         }
 
         while(ptr2 != null){
-            Integer current = ptr2.val;
+            int current = ptr2.val;
 
             if(current == valueToRemove){
                 ptr1.next = ptr2.next;
@@ -74,6 +74,20 @@ public class SingleLinkedList {
     public void reverse() {
         // homework
         // in-place
+        if(head.next == null || head.next.next == null){
+            return;
+        }
+
+        ListNode ptr1 = head.next;
+        ListNode ptr2 = head.next.next;
+
+        while(ptr2 != null){
+            ptr1.next = ptr2.next;
+            ptr2.next = head.next;
+            head.next = ptr2;
+
+            ptr2 = ptr1.next;
+        }
     }
 
     // do not change any function below
